@@ -2,19 +2,25 @@
   <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current');   // Don't need to specify chart libraries!
-      google.charts.setOnLoadCallback(drawVisualization);
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
 
-      function drawVisualization() {
-        var wrapper = new google.visualization.ChartWrapper({
-          chartType: 'LineChart',
-          dataSourceUrl: 'https://docs.google.com/spreadsheets/d/1472WBAZMKUxCgMj4X1r42v4CX7nNK2FS9qHGUzoBqwc/edit#gid=546681635',
-          query: 'SELECT A37,N55',
-          options: {'title': 'Countries'},
-          containerId: 'vis_div'
-        });
-        wrapper.draw()
+    function drawGID() {
+      var queryString = encodeURIComponent('SELECT A:N');
+      var query = new google.visualization.Query(
+          'https://docs.google.com/spreadsheets/d/1472WBAZMKUxCgMj4X1r42v4CX7nNK2FS9qHGUzoBqwc/edit#gid=546681635' + queryString);
+      query.send(handleQueryResponse);
+    }
+    function handleQueryResponse(response) {
+      if (response.isError()) {
+        alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+        return;
       }
+      var data = response.getDataTable();
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+      chart.draw(data, { height: 400 });
+    }
+
     </script>
   </head>
   <body style="font-family: Arial;border: 0 none;">
