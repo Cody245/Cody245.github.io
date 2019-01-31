@@ -1,49 +1,8 @@
 <html lang="en">
   <head>
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="828274649672-4hf7if4390du1pc4p86gemefn5dts5f1.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-  </head>
-  <body>
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-    <script>
-      function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
 
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-      }
+  <iframe width="1087" height="671" seamless frameborder="0" scrolling="no" src="https://docs.google.com/a/desktopmetal.com/spreadsheets/d/e/2PACX-1vQgOAISWlT7IwytnYRjfJrFJtknSVKOYAdZ_ZctzSXPwiMvjBdOpF2zU22hqzu7mLHX40gnSTvU4_7F/pubchart?oid=590466381&amp;format=interactive"></iframe>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-    google.charts.load('current', {packages: ['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-
-    function drawGID() {
-      var queryString = encodeURIComponent('SELECT A:N');
-      var query = new google.visualization.Query(
-          'https://docs.google.com/spreadsheets/d/1472WBAZMKUxCgMj4X1r42v4CX7nNK2FS9qHGUzoBqwc/edit#gid=546681635' + queryString);
-      query.send(handleQueryResponse);
-    }
-    function handleQueryResponse(response) {
-      if (response.isError()) {
-        alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-        return;
-      }
-      var data = response.getDataTable();
-      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-      chart.draw(data, { height: 400 });
-    }
-
-    </script>
   </head>
   <body style="font-family: Arial;border: 0 none;">
     <div id="vis_div" style="width: 600px; height: 400px;"></div>
