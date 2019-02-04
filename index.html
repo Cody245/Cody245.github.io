@@ -1,10 +1,24 @@
-function drawChart() {
-  var query = new google.visualization.Query(https://docs.google.com/spreadsheets/d/1472WBAZMKUxCgMj4X1r42v4CX7nNK2FS9qHGUzoBqwc/edit#gid=546681635?range=A:N);
-  query.send(handleQueryResponse);
-}
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {packages: ['corechart']});
+  google.charts.setOnLoadCallback(drawGID);
 
-function handleQueryResponse(response) {
-  var data = response.getDataTable();
-  var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
-  chart.draw(data, null);
-}
+function drawGID() {
+      var queryString = encodeURIComponent('SELECT A, H, O, Q, R, U LIMIT 5 OFFSET 8');
+
+      var query = new google.visualization.Query(
+          'https://docs.google.com/spreadsheets/d/1XWJLkAwch5GXAt_7zOFDcg8Wm8Xv29_8PWuuW15qmAE/gviz/tq?gid=0&headers=1&tq=' + queryString);
+      query.send(handleQueryResponse);
+    }
+
+    function handleQueryResponse(response) {
+      if (response.isError()) {
+        alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+        return;
+      }
+
+      var data = response.getDataTable();
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+      chart.draw(data, { height: 400 });
+    }
+</script> 
