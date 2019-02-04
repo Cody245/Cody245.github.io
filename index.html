@@ -26,18 +26,23 @@ function initialize() {
   query.send(handleQueryResponse);
 }
 
+      //error handling
 function handleQueryResponse(response) {
-//error handling
   if (response.isError()) {
     alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
     return;
   }
+  
  // Create the data table
   var data = response.getDataTable();
   var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
   chart.draw(data, {width: 400, height: 240, is3D: true});
 }
+      function drawChart() {
 
+      // Create the data table.
+      var data = new google.visualization.DataTable()
+      }
     </script>
   </head>
 
