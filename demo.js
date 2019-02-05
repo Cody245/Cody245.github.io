@@ -31,7 +31,7 @@ function makeApiCall() {
   // with or without an OAuth token.  For a better test, replace this
   // URL with a private spreadsheet.
   var tqUrl = 'https://docs.google.com/spreadsheets' +
-      '/d/1472WBAZMKUxCgMj4X1r42v4CX7nNK2FS9qHGUzoBqwc/gviz/tq' +
+      '/d/1472WBAZMKUxCgMj4X1r42v4CX7nNK2FS9qHGUzoBqwc/gviz/tq?gid=1419588662' +
       '?tqx=responseHandler:handleTqResponse' +
       '&access_token=' + encodeURIComponent(gapi.auth.getToken().access_token);
 
