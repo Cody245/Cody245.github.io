@@ -35,7 +35,7 @@ function makeApiCall() {
       '?tqx=responseHandler:handleTqResponse' +
       '&access_token=' + encodeURIComponent(gapi.auth.getToken().access_token);
 
-  document.write('<script src="' + tqUrl +'" type="text/javascript"></script>');
+  document.write('<script src="' + tqUrl +'" type="text/javascript" async></script>');
 }
 
 function handleTqResponse(resp) {
